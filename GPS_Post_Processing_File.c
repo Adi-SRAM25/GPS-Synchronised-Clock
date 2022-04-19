@@ -202,22 +202,26 @@ void DemoInitialize() {
    GPS_setUpdateRate(&GPS, 1000);
 }
 
-/****************/
+
 void DemoRun() {
 
       if (GPS.ping) {
          GPS_formatSentence(&GPS);
          if (GPS_isFixed(&GPS)) {
-        	printf("Time Stamp: %f", GPS_getTime(&GPS));
+            string a = GPS_getTime(&GPS);
+            int Hour = (int (a[0:1]) + 5)%24;
+            int Minutes = (int (a[2:3]) + 30)%60;
+            int Seconds = int (a[4:5]);
+               
+        	printf("Time Stamp: %d", Hour);
+            printf(":%d", Minutes);  
+            printf(":%d", Second);  
             //xil_printf("Latitude: %s\n\r", GPS_getLatitude(&GPS));
-            // xil_printf("Longitude: %s\n\r", GPS_getLongitude(&GPS));
+            //xil_printf("Longitude: %s\n\r", GPS_getLongitude(&GPS));
             //xil_printf("Altitude: %s\n\r", GPS_getAltitudeString(&GPS));
             //xil_printf("Number of Satellites: %d\n\n\r", GPS_getNumSats(&GPS));
          }
-         /*else {
-            xil_printf("Number of Satellites: %d\n\r", GPS_getNumSats(&GPS));
-         }
-         GPS.ping = FALSE;*/
+        
       }
 
    DisableCaches();
