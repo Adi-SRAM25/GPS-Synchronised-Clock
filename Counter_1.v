@@ -1,3 +1,4 @@
+
 `timescale 1ns / 1ps
 
 module Counter_1 (reset,clk,q);
@@ -15,6 +16,4 @@ module Counter_1 (reset,clk,q);
        q<=q+1;
    end  
 	
-
-  
 endmodule
