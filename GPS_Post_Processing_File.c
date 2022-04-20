@@ -211,6 +211,8 @@ void DemoRun() {
             string a = GPS_getTime(&GPS);
             int Hour = (int (a[0:1]) + 5)%24;
             int Minutes = (int (a[2:3]) + 30)%60;
+            Dummy = (int (a[2:3]) + 30);
+            Hour = Hour + Dummy/60;
             int Seconds = int (a[4:5]);
                
         	printf("Time Stamp: %d", Hour);
